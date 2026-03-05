@@ -10,7 +10,7 @@ plugins {
 apply(plugin = "signing")
 
 group = "io.github.hahadu"
-version = rootProject.version
+version = "1.0.1"
 
 kotlin {
     jvmToolchain(21)
@@ -22,6 +22,7 @@ java {
 }
 
 dependencies {
+    implementation(project(":ktor-annotations"))
     implementation("io.ktor:ktor-server-core:$ktor_version")
     implementation("io.ktor:ktor-server-auth:$ktor_version")
     implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
@@ -34,11 +35,11 @@ publishing {
             from(components["java"])
             groupId = "io.github.hahadu"
             artifactId = "ktor-controllers"
-            version = rootProject.version.toString()
+            version = project.version.toString()
             pom {
                 name.set("ktor-controllers")
                 description.set("Ktor MVC-style controller helpers")
-                url.set("https://github.com/hahadu/apidoc-generate")
+                url.set("https://github.com/hahadu/ktor-controllers")
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
@@ -53,8 +54,8 @@ publishing {
                     }
                 }
                 scm {
-                    url.set("https://github.com/hahadu/ktor-apidoc-plugin")
-                    connection.set("scm:git:https://github.com/hahadu/apidoc-generate.git")
+                    url.set("https://github.com/hahadu/ktor-controllers")
+                    connection.set("scm:git:https://github.com/hahadu/ktor-controllers.git")
                     developerConnection.set("scm:git:ssh://github.com/hahadu/apidoc-generate.git")
                 }
             }
@@ -96,7 +97,7 @@ jreleaser {
         license.set("Apache-2.0")
         authors.add("hahadu")
         links {
-            homepage.set("https://github.com/hahadu/apidoc-generate")
+            homepage.set("https://github.com/hahadu/")
         }
     }
     deploy {
